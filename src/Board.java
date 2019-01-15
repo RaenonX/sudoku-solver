@@ -1,21 +1,44 @@
-public class Board {
-    private byte[][] sudoku;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-    Board(byte[][] sudoku) {
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+public class Board {
+    private ArrayList<ArrayList<Byte>> sudoku;
+
+    Board(ArrayList<ArrayList<Byte>> sudoku) {
         this.sudoku = sudoku;
+    }
+
+    InsertResult insertSlot(int row, int column, byte number) {
+        if (this.sudoku.get(row).get(column) == -1) {
+            if (validInSquare(row, column, number) && validInRow(row, number) && validInColumn(column, number)) {
+                return InsertResult.Success;
+            } else {
+                return InsertResult.Conflicted;
+            }
+        } else {
+            return InsertResult.Preset;
+        }
+    }
+
+    boolean validInSquare(int row, int column, byte number) {
+        throw new NotImplementedException();
+    }
+
+    boolean validInRow(int row, byte number) {
+        throw new NotImplementedException();
+    }
+
+    boolean validInColumn(int column, byte number) {
+        throw new NotImplementedException();
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                int item = sudoku[i][j];
-
-                sb.append(item == -1 ? Character.toString(BoardReader.EMPTY_SYMBOL) : Integer.toString(item));
-            }
-
-            if (i < 8) sb.append("\n");
+        for (ArrayList<Byte> row : sudoku) {
+            sb.append(row.stream().map(x -> x == -1 ? BoardReader.EMPTY_SYMBOL : x.toString()).map(Object::toString).collect(Collectors.joining()));
         }
 
         return sb.toString();

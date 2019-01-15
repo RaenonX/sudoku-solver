@@ -36,7 +36,7 @@ public class BoardTest {
     @Test
     public void testPrintConsole() {
         try {
-            Assert.assertEquals("2..1.5..5\n.54...71.\n.1.2.3.8.\n6.28.73.4\n.........\n1.53.98.6\n.2.7.1.6.\n.81...24.\n7..4.2..1", BoardReader.read("puzzle5.sdk").toString());
+            Assert.assertEquals("2..1.5..5\n.54...71.\n.1.2.3.8.\n6.28.73.4\n.........\n1.53.98.6\n.2.7.1.6.\n.81...24.\n7..4.2..1", BoardReader.read("puzzle.sdk").toString());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }

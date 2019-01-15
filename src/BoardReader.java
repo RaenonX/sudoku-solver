@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -20,7 +21,7 @@ class BoardReader {
     static final char EMPTY_SYMBOL = '.';
 
     static Board read(String FilePath) throws InsufficientRowLengthException, InsufficientRowException, IOException {
-        byte[][] sudoku = new byte[9][9];
+        ArrayList<ArrayList<Byte>> sudoku = new ArrayList<>();
 
         try {
             Iterator<String> sudokuIter = Files.readAllLines(Paths.get(FilePath)).iterator();
@@ -28,10 +29,13 @@ class BoardReader {
             for (int i = 0; i < 9; i++) {
                 String row = sudokuIter.next();
 
+                sudoku.add(new ArrayList<>());
+
                 if (row.length() >= 9) {
                     for (int j = 0; j < 9; j++) {
                         char c = row.charAt(j);
-                        sudoku[i][j] = c == EMPTY_SYMBOL ? -1 : (byte) (c - 48);
+
+                        sudoku.get(i).add(c == EMPTY_SYMBOL ? -1 : (byte) (c - 48));
                     }
                 } else {
                     throw new InsufficientRowLengthException(i, row);
