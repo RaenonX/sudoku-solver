@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class Board {
     }
 
     boolean validInSquare(int row, int column, byte number) {
-        IntFunction<Integer> blockMin = x -> x * 2;
+        IntFunction<Integer> blockMin = x -> x * 3;
         IntFunction<Integer> blockMax = x -> blockMin.apply(x) + 2;
 
         int rowBlock = Math.floorDiv(row, 3);
@@ -61,9 +62,10 @@ public class Board {
     }
 
     boolean validArrayList(ArrayList<Byte> al) {
-        Stream<Byte> s = al.stream().filter(this.filterEmptySlots);
+        List<Byte> l = al.stream().filter(this.filterEmptySlots).collect(Collectors.toList());
+        Stream<Byte> s = l.stream(), s2 = l.stream();
 
-        return s.distinct().count() == s.count();
+        return s.distinct().count() == s2.count();
     }
 
     public String toString() {
