@@ -1,4 +1,4 @@
-package Main.Exceptions;
+package main.Exceptions;
 
 public class InsufficientRowLengthException extends Exception {
     public InsufficientRowLengthException(int rowNumber, String row) {

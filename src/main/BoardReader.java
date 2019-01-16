@@ -1,8 +1,8 @@
-package Main;
+package main;
 
-import Main.Exceptions.FileFormatUnsupportedException;
-import Main.Exceptions.InsufficientRowException;
-import Main.Exceptions.InsufficientRowLengthException;
+import main.Exceptions.FileFormatUnsupportedException;
+import main.Exceptions.InsufficientRowException;
+import main.Exceptions.InsufficientRowLengthException;
 
 import java.io.IOException;
 import java.nio.file.Files;

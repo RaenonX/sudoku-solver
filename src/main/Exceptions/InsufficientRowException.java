@@ -1,4 +1,4 @@
-package Main.Exceptions;
+package main.Exceptions;
 
 public class InsufficientRowException extends Exception {
     public InsufficientRowException() {

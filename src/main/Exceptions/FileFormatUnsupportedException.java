@@ -1,4 +1,4 @@
-package Main.Exceptions;
+package main.Exceptions;
 
 public class FileFormatUnsupportedException extends Exception {
     public FileFormatUnsupportedException(String ext) {

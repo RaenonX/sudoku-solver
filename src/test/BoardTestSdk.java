@@ -1,36 +1,36 @@
-import Main.BoardReader;
-import Main.Exceptions.InsufficientRowException;
-import Main.Exceptions.InsufficientRowLengthException;
+import main.BoardReader;
+import main.Exceptions.InsufficientRowException;
+import main.Exceptions.InsufficientRowLengthException;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 
-public class BoardTestSs {
+public class BoardTestSdk {
     @Test
     public void testPoorlyFormed() {
         try {
-            BoardReader.read("puzzle3.ss");
-            Assert.fail("Should get an Main.InsufficientRowLengthException - puzzle3.ss");
+            BoardReader.read("puzzle-lessCol.sdk");
+            Assert.fail("Should get an main.InsufficientRowLengthException - puzzle-lessCol.sdk");
         } catch (InsufficientRowLengthException e) {
         } catch (Exception e) {
-            Assert.fail("Should get an " + e.getMessage() + " - puzzle3.ss");
+            Assert.fail("Should get an " + e.getMessage() + " - puzzle-lessCol.sdk");
         }
 
         try {
-            BoardReader.read("puzzle4.ss");
-            Assert.fail("Should get an Main.InsufficientRowException - puzzle4.ss");
+            BoardReader.read("puzzle-lessRow.sdk");
+            Assert.fail("Should get an main.InsufficientRowException - puzzle-lessRow.sdk");
         } catch (InsufficientRowException e) {
         } catch (Exception e) {
-            Assert.fail("Should get an " + e.getMessage() + " - puzzle4.ss");
+            Assert.fail("Should get an " + e.getMessage() + " - puzzle-lessRow.sdk");
         }
 
         try {
-            BoardReader.read("puzzle5.ss");
-            Assert.fail("Should get an IOException - puzzle5.ss");
+            BoardReader.read("puzzle5.sdk");
+            Assert.fail("Should get an IOException - puzzle5.sdk");
         } catch (IOException e) {
         } catch (Exception e) {
-            Assert.fail("Should get an " + e.getMessage() + " - puzzle5.ss");
+            Assert.fail("Should get an " + e.getMessage() + " - puzzle5.sdk");
         }
     }
 
@@ -46,7 +46,7 @@ public class BoardTestSs {
                             "1.53.98.6\n" +
                             ".2.7.1.6.\n" +
                             ".81...24.\n" +
-                            "7..4.2..1", BoardReader.read("puzzle.ss").toString());
+                            "7..4.2..1", BoardReader.read("puzzle-normal.sdk").toString());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
@@ -64,7 +64,7 @@ public class BoardTestSs {
                             "1.53.98.6\n" +
                             ".2.7.1.6.\n" +
                             ".81...24.\n" +
-                            "7..4.2..1", BoardReader.read("puzzle2.ss").toString());
+                            "7..4.2..1", BoardReader.read("puzzle-extraCol.sdk").toString());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }

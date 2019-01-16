@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5f88d2a-4967-4d65-8a39-5fdd6e989ba2" name="Default" comment="Changes array to ArrayLists (Halfway)">
-      <change afterPath="$PROJECT_DIR$/puzzle.ss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/puzzle2.ss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/puzzle3.ss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/puzzle4.ss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/BoardReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/Exceptions/FileFormatUnsupportedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowLengthException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test/BoardTestSs.java" afterDir="false" />
+    <list default="true" id="e5f88d2a-4967-4d65-8a39-5fdd6e989ba2" name="Default" comment="Complete changing to List&lt;List&lt;Byte&gt;&gt;, add ss parser.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/puzzle.sdk" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle.sdk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoardReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/BoardTestSdk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InsertResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle.sdk" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle-normal.sdk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle.ss" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle-normal.ss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle2.sdk" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle-extraCol.sdk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle2.ss" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle-extraCol.ss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/BoardReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BoardReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Exceptions/FileFormatUnsupportedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Exceptions/FileFormatUnsupportedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Exceptions/InsufficientRowException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowLengthException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Exceptions/InsufficientRowLengthException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/BoardTestSdk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BoardTestSdk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/BoardTestSs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BoardTestSs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sudoku-solver.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku-solver.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,7 +28,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
@@ -39,42 +37,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Board.java">
+        <entry file="file://$PROJECT_DIR$/src/main/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#387#388#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/BoardReader.java">
+        <entry file="file://$PROJECT_DIR$/src/main/BoardReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="25" lean-forward="true" selection-start-column="13" selection-end-line="2" selection-end-column="25" />
+            <state relative-caret-position="45">
+              <caret line="3" column="43" selection-start-column="13" selection-end-line="4" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/puzzle3.sdk">
+        <entry file="file://$PROJECT_DIR$/puzzle-normal.sdk">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            <state relative-caret-position="90">
+              <caret line="6" column="9" selection-end-line="8" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/puzzle-extraCol.sdk">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Test/BoardTestSdk.java">
+        <entry file="file://$PROJECT_DIR$/src/test/BoardTestSdk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            <state relative-caret-position="695">
+              <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,10 +88,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/BoardTestSs.java">
+        <entry file="file://$PROJECT_DIR$/src/test/BoardTestSs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="345">
+              <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="31" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,11 +154,14 @@
         <option value="$PROJECT_DIR$/puzzle2.ss" />
         <option value="$PROJECT_DIR$/puzzle3.ss" />
         <option value="$PROJECT_DIR$/puzzle4.ss" />
-        <option value="$PROJECT_DIR$/src/Test/BoardTestSs.java" />
-        <option value="$PROJECT_DIR$/src/Main/Board.java" />
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/Main/BoardReader.java" />
         <option value="$PROJECT_DIR$/src/Test/BoardTestSdk.java" />
+        <option value="$PROJECT_DIR$/src/Test/BoardTestSs.java" />
+        <option value="$PROJECT_DIR$/src/Main/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/Board.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/test/BoardTestSdk.java" />
       </list>
     </option>
   </component>
@@ -169,7 +177,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,32 +184,11 @@
               <item name="sudoku-solver" type="b2602c69:ProjectViewProjectNode" />
               <item name="sudoku-solver" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="sudoku-solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sudoku-solver" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sudoku-solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sudoku-solver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sudoku-solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sudoku-solver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sudoku-solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sudoku-solver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -211,13 +197,13 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547615376120" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547621622252" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bubble-insertion-sort" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -238,7 +224,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="sudoku-solver" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -302,7 +288,9 @@
       <workItem from="1547513932058" duration="6349000" />
       <workItem from="1547527395144" duration="2357000" />
       <workItem from="1547529782364" duration="60000" />
-      <workItem from="1547529855974" duration="10699000" />
+      <workItem from="1547529855974" duration="12291000" />
+      <workItem from="1547620355589" duration="570000" />
+      <workItem from="1547620940246" duration="626000" />
     </task>
     <task id="LOCAL-00001" summary="Delete unuseful README">
       <created>1547008862263</created>
@@ -339,16 +327,17 @@
       <option name="project" value="LOCAL" />
       <updated>1547536267281</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Complete changing to List&lt;List&lt;Byte&gt;&gt;, add ss parser.">
+      <created>1547615427734</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547615427734</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.01.14 at 13h 30m 45s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.01.14 at 15h 14m 48s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest - 2019.01.14 at 15h 49m 36s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
@@ -373,9 +362,15 @@
     <history-entry file="MainTest - 2019.01.14 at 23h 09m 45s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestSdk - 2019.01.15 at 21h 09m 27s.xml">
+      <configuration name="TestSdk" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSs - 2019.01.15 at 21h 09m 32s.xml">
+      <configuration name="TestSs" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47100000" />
+    <option name="totallyTimeSpent" value="49888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,7 +385,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.56058156" visible="true" weight="0.16364606" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.56058156" visible="true" weight="0.16684435" />
       <window_info id="Structure" order="1" sideWeight="0.4394184" side_tool="true" weight="0.16364606" />
       <window_info id="Learn" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -400,7 +395,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997233" weight="0.29460967" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997233" weight="0.26002166" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -505,7 +500,8 @@
     <MESSAGE value="Extract reading process to BoardReader" />
     <MESSAGE value="Complete insert slot function" />
     <MESSAGE value="Complete insert slot tests, Fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete insert slot tests, Fix bugs" />
+    <MESSAGE value="Complete changing to List&lt;List&lt;Byte&gt;&gt;, add ss parser." />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete changing to List&lt;List&lt;Byte&gt;&gt;, add ss parser." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -544,21 +540,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/InsertResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Exceptions/FileFormatUnsupportedException.java">
+    <entry file="file://$PROJECT_DIR$/src/Main/InsertResult.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/Exceptions/FileFormatUnsupportedException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Exceptions/InsufficientRowException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
@@ -569,7 +559,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Exceptions/InsufficientRowLengthException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Exceptions/InsufficientRowLengthException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
@@ -593,7 +583,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/puzzle.ss">
+    <entry file="file://$PROJECT_DIR$/puzzle-normal.ss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="11" selection-end-line="10" selection-end-column="11" />
@@ -614,60 +604,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/puzzle.sdk">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="9" lean-forward="true" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/puzzle2.sdk">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/puzzle2.ss">
+    <entry file="file://$PROJECT_DIR$/puzzle-extraCol.ss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/BoardTestSs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/BoardReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="25" lean-forward="true" selection-start-column="13" selection-end-line="2" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -678,10 +618,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/BoardTestSdk.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        <state relative-caret-position="45">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/BoardTestSs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="31" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/BoardReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="43" selection-start-column="13" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/puzzle-normal.sdk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/puzzle-extraCol.sdk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/BoardTestSdk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
