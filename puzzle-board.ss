@@ -9,3 +9,6 @@
 .2.|7.1|.6.
 .81|...|24.
 7..|4.2|..1
+
+add 1 for Square, Column, Row Fails@Row 1 Column 0
+Square, Column, Row Success@Row 3 Column 3
