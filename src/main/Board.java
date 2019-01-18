@@ -83,19 +83,19 @@ public class Board {
         AutoSolveResult result = new AutoSolveResult();
 
         result.recordStart();
-        result.recordEnd(autoSolve(result));
+        result.recordEnd(autoSolve(0, result));
 
         return result;
     }
 
-    public boolean autoSolve(AutoSolveResult asr) {
+    public boolean autoSolve(int row, AutoSolveResult asr) {
         asr.recordOperations();
 
-        for (int r = 0; r < 9; r++) {
+        for (int r = row; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
                 if (isEmptySlot(r, c)) {
                     for (int e = 1; e <= 9; e++) {
-                        if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) && autoSolve(asr)) {
+                        if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) && autoSolve(r, asr)) {
                             return true;
                         } else {
                             removeEntry(r, c);
