@@ -1,5 +1,7 @@
 package main;
 
+import java.util.stream.Stream;
+
 public class ValidationResult {
     ValidationResultEnum result;
     ValidationTargetEnum target;
@@ -11,8 +13,14 @@ public class ValidationResult {
         this.position = position;
     }
 
-    boolean getSuccess() {
-        return this.result != ValidationResultEnum.Failed;
+    ValidationResult(ValidationResultEnum result) {
+        this.result = result;
+        this.target = ValidationTargetEnum.Exception;
+        this.position = -1;
+    }
+
+    boolean isSuccess() {
+        return Stream.of(ValidationResultEnum.SuccessWithEmpty, ValidationResultEnum.SuccessFilled).anyMatch(x -> x == result);
     }
 
     public ValidationResultEnum getValidationResult() {
@@ -20,6 +28,11 @@ public class ValidationResult {
     }
 
     public String toString() {
-        return String.format("Validation %s. Target is %s %d.", this.result, this.target, this.position);
+        if (this.target != ValidationTargetEnum.Exception) {
+            return String.format("Validation %s. Target is %s %d.", this.result, this.target, this.position);
+        } else {
+            return String.format("Exception occurred. %s", this.result);
+        }
+
     }
 }

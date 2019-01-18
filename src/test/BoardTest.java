@@ -1,5 +1,6 @@
 import main.Board;
 import main.BoardReader;
+import main.Exceptions.EntryExistedException;
 import main.Exceptions.EntryOutOfBoundException;
 import main.ValidationResultEnum;
 import org.junit.Assert;
@@ -7,21 +8,21 @@ import org.junit.Test;
 
 public class BoardTest {
     @Test
-    public void testValidations() throws EntryOutOfBoundException {
+    public void testValidations() throws EntryOutOfBoundException, EntryExistedException {
         Board b = BoardReader.readSafe("puzzle-board.ss");
 
         b.insertEntry(1, 0, 1);
 
-        Assert.assertEquals(ValidationResultEnum.Failed, b.validateSquare(1, 0).getValidationResult());
-        Assert.assertEquals(ValidationResultEnum.Failed, b.validateRow(1).getValidationResult());
-        Assert.assertEquals(ValidationResultEnum.Failed, b.validateColumn(0).getValidationResult());
+        Assert.assertEquals(ValidationResultEnum.FailedConflicted, b.validateSquare(1, 0).getValidationResult());
+        Assert.assertEquals(ValidationResultEnum.FailedConflicted, b.validateRow(1).getValidationResult());
+        Assert.assertEquals(ValidationResultEnum.FailedConflicted, b.validateColumn(0).getValidationResult());
         Assert.assertEquals(ValidationResultEnum.SuccessWithEmpty, b.validateSquare(3, 3).getValidationResult());
         Assert.assertEquals(ValidationResultEnum.SuccessWithEmpty, b.validateRow(3).getValidationResult());
         Assert.assertEquals(ValidationResultEnum.SuccessWithEmpty, b.validateColumn(3).getValidationResult());
     }
 
     @Test(expected = EntryOutOfBoundException.class)
-    public void testInsert() throws EntryOutOfBoundException {
+    public void testInsert() throws EntryOutOfBoundException, EntryExistedException {
         Board b = BoardReader.readSafe("puzzle-board.ss");
 
         b.insertEntry(1, 0, -1);

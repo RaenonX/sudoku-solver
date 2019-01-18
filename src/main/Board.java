@@ -1,5 +1,6 @@
 package main;
 
+import main.Exceptions.EntryExistedException;
 import main.Exceptions.EntryOutOfBoundException;
 
 import java.util.ArrayList;
@@ -12,50 +13,119 @@ import java.util.stream.Stream;
 // Partial code of validateColumn comes from https://stackoverflow.com/a/18552071
 
 public class Board {
+    public static byte EMPTY_SLOT = -1;
+
     private List<List<Byte>> sudoku;
     private Predicate<Byte> filterEmpty;
 
     public Board(List<List<Byte>> sudoku) {
         this.sudoku = sudoku;
-        this.filterEmpty = x -> x != (byte) -1;
+        this.filterEmpty = x -> x != EMPTY_SLOT;
     }
 
     public static byte validateEntry(byte num) throws EntryOutOfBoundException {
-        if ((num >= 1 && num <= 9) || num == -1) {
+        if ((num >= 1 && num <= 9) || num == EMPTY_SLOT) {
             return num;
         } else {
             throw new EntryOutOfBoundException(num);
         }
     }
 
-    public void insertEntry(int rowNum, int colNum, int number) throws EntryOutOfBoundException {
+    public boolean insertEntrySafe(int rowNum, int colNum, int number) {
+        try {
+            insertEntry(rowNum, colNum, number);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void insertEntry(int rowNum, int colNum, int number)
+            throws EntryOutOfBoundException, EntryExistedException {
         insertEntry(rowNum, colNum, (byte) number);
     }
 
-    public void insertEntry(int rowNum, int colNum, byte number) throws EntryOutOfBoundException {
+    public void insertEntry(int rowNum, int colNum, byte number)
+            throws EntryOutOfBoundException, EntryExistedException {
         if (number < 1 || number > 9) {
             throw new EntryOutOfBoundException(number);
         }
 
-        sudoku.get(rowNum).set(colNum, number);
+        if (!isEmptySlot(rowNum, colNum)) {
+            throw new EntryExistedException(rowNum, colNum);
+        } else {
+            sudoku.get(rowNum).set(colNum, number);
+        }
+    }
+
+    public void removeEntry(int rowNum, int colNum) {
+        sudoku.get(rowNum).set(colNum, EMPTY_SLOT);
+    }
+
+    public boolean isEmptySlot(int rowNum, int colNum) {
+        return sudoku.get(rowNum).get(colNum) == EMPTY_SLOT;
     }
 
     public List<ValidationResult> isSolvedDetail() {
-        return IntStream.range(0, 9).mapToObj(x -> new ValidationResult[]{validateRow(x), validateColumn(x), validateSquare(x)}).flatMap(Stream::of).collect(Collectors.toList());
+        return IntStream
+                .range(0, 9)
+                .mapToObj(
+                        x -> new ValidationResult[]{validateRow(x), validateColumn(x), validateSquare(x)})
+                .flatMap(Stream::of)
+                .collect(Collectors.toList());
     }
 
     public boolean isSolved() {
         return isSolvedDetail().stream().allMatch(x -> x.getValidationResult() == ValidationResultEnum.SuccessFilled);
     }
 
-    public List<ValidationResult> insertEntryValidate(int rowNum, int colNum, byte number) throws EntryOutOfBoundException {
-        insertEntry(rowNum, colNum, number);
+    public AutoSolveResult autoSolve() {
+        AutoSolveResult result = new AutoSolveResult();
 
-        return new ArrayList<ValidationResult>() {{
-            add(validateRow(rowNum));
-            add(validateColumn(colNum));
-            add(validateSquare(rowNum, colNum));
-        }};
+        result.recordStart();
+        result.recordEnd(autoSolve(result));
+
+        return result;
+    }
+
+    public boolean autoSolve(AutoSolveResult asr) {
+        asr.recordOperations();
+
+        for (int r = 0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                if (isEmptySlot(r, c)) {
+                    for (int e = 1; e <= 9; e++) {
+                        if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) && autoSolve(asr)) {
+                            return true;
+                        } else {
+                            removeEntry(r, c);
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public List<ValidationResult> insertEntryValidateSafe(int rowNum, int colNum, byte number) {
+        try {
+            insertEntry(rowNum, colNum, number);
+
+            return new ArrayList<ValidationResult>() {{
+                add(validateRow(rowNum));
+                add(validateColumn(colNum));
+                add(validateSquare(rowNum, colNum));
+            }};
+        } catch (EntryExistedException e) {
+            return new ArrayList<ValidationResult>() {{
+                add(new ValidationResult(ValidationResultEnum.FailedEntryExisted));
+            }};
+        } catch (EntryOutOfBoundException e) {
+            return new ArrayList<ValidationResult>() {{
+                add(new ValidationResult(ValidationResultEnum.FailedOutOfBound));
+            }};
+        }
     }
 
     public ValidationResult validateSquare(int squareIndex) {
@@ -100,7 +170,7 @@ public class Board {
                 .stream()
                 .map(row -> row
                         .stream()
-                        .map(x -> x == -1 ? BoardReader.EMPTY_SYMBOL : x.toString())
+                        .map(x -> x == EMPTY_SLOT ? BoardReader.EMPTY_SYMBOL : x.toString())
                         .map(Object::toString)
                         .collect(Collectors.joining()))
                 .collect(Collectors.joining("\n"));
@@ -117,7 +187,7 @@ public class Board {
         if (setCount == totalCount) {
             result = setCount == 9 ? ValidationResultEnum.SuccessFilled : ValidationResultEnum.SuccessWithEmpty;
         } else {
-            result = ValidationResultEnum.Failed;
+            result = ValidationResultEnum.FailedConflicted;
         }
 
         return new ValidationResult(result, target, position);

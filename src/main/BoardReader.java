@@ -22,7 +22,8 @@ public class BoardReader {
         return idx > 0 ? FilePath.substring(idx + 1) : "";
     }
 
-    public static Board read(String FilePath) throws InsufficientRowLengthException, InsufficientRowException, IOException, FileFormatUnsupportedException, EntryOutOfBoundException {
+    public static Board read(String FilePath)
+            throws InsufficientRowLengthException, InsufficientRowException, IOException, FileFormatUnsupportedException, EntryOutOfBoundException {
         String ext = getFileExt(FilePath);
 
         if (ext.equals("ss")) {
@@ -54,7 +55,8 @@ public class BoardReader {
                 .collect(Collectors.toList());
     }
 
-    private static Board read(List<String> LinesList) throws InsufficientRowLengthException, InsufficientRowException, EntryOutOfBoundException {
+    private static Board read(List<String> LinesList)
+            throws InsufficientRowLengthException, InsufficientRowException, EntryOutOfBoundException {
         List<List<Byte>> sudoku = new ArrayList<>();
 
         try {

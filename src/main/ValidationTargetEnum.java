@@ -18,5 +18,11 @@ public enum ValidationTargetEnum {
         public String toString() {
             return "square";
         }
+    },
+    Exception {
+        @Override
+        public String toString() {
+            return "exception";
+        }
     }
 }

@@ -13,10 +13,22 @@ public enum ValidationResultEnum {
             return "Success with empty entries";
         }
     },
-    Failed {
+    FailedConflicted {
         @Override
         public String toString() {
-            return "Failed";
+            return "Failed because conflicted";
+        }
+    },
+    FailedOutOfBound {
+        @Override
+        public String toString() {
+            return "Failed because out of bound";
+        }
+    },
+    FailedEntryExisted {
+        @Override
+        public String toString() {
+            return "Failed because entry already existed";
         }
     }
 }
