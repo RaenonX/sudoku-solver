@@ -62,15 +62,16 @@ public class BoardReader {
         try {
             Iterator<String> sudokuIter = LinesList.iterator();
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < Board.BOARD_SIZE; i++) {
                 String row = sudokuIter.next();
 
                 sudoku.add(new ArrayList<>());
 
-                if (row.length() >= 9) {
-                    for (int j = 0; j < 9; j++) {
+                if (row.length() >= Board.BOARD_SIZE) {
+                    for (int j = 0; j < Board.BOARD_SIZE; j++) {
                         char c = row.charAt(j);
 
+                        // - 48 because of ASCII code point 48 (DEC) is "0"
                         sudoku.get(i).add(Board.validateEntry(c == EMPTY_SYMBOL ? -1 : (byte) (c - 48)));
                     }
                 } else {

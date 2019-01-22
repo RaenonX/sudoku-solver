@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 public class Board {
     public static byte EMPTY_SLOT = -1;
+    public static byte BOARD_SIZE = 9;
 
     private List<List<Byte>> sudoku;
     private Predicate<Byte> filterEmpty;
@@ -24,7 +25,7 @@ public class Board {
     }
 
     public static byte validateEntry(byte num) throws EntryOutOfBoundException {
-        if ((num >= 1 && num <= 9) || num == EMPTY_SLOT) {
+        if ((num >= 1 && num <= Board.BOARD_SIZE) || num == EMPTY_SLOT) {
             return num;
         } else {
             throw new EntryOutOfBoundException(num);
@@ -47,7 +48,7 @@ public class Board {
 
     public void insertEntry(int rowNum, int colNum, byte number)
             throws EntryOutOfBoundException, EntryExistedException {
-        if (number < 1 || number > 9) {
+        if (number < 1 || number > Board.BOARD_SIZE) {
             throw new EntryOutOfBoundException(number);
         }
 
@@ -68,7 +69,7 @@ public class Board {
 
     public List<ValidationResult> isSolvedDetail() {
         return IntStream
-                .range(0, 9)
+                .range(0, Board.BOARD_SIZE)
                 .mapToObj(
                         x -> new ValidationResult[]{validateRow(x), validateColumn(x), validateSquare(x)})
                 .flatMap(Stream::of)
@@ -91,10 +92,10 @@ public class Board {
     public boolean autoSolve(int row, AutoSolveResult asr) {
         asr.recordOperations();
 
-        for (int r = row; r < 9; r++) {
-            for (int c = 0; c < 9; c++) {
+        for (int r = row; r < Board.BOARD_SIZE; r++) {
+            for (int c = 0; c < Board.BOARD_SIZE; c++) {
                 if (isEmptySlot(r, c)) {
-                    for (int e = 1; e <= 9; e++) {
+                    for (int e = 1; e <= Board.BOARD_SIZE; e++) {
                         if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) && autoSolve(r, asr)) {
                             return true;
                         } else {
@@ -185,7 +186,7 @@ public class Board {
         ValidationResultEnum result;
 
         if (setCount == totalCount) {
-            result = setCount == 9 ? ValidationResultEnum.SuccessFilled : ValidationResultEnum.SuccessWithEmpty;
+            result = setCount == Board.BOARD_SIZE ? ValidationResultEnum.SuccessFilled : ValidationResultEnum.SuccessWithEmpty;
         } else {
             result = ValidationResultEnum.FailedConflicted;
         }

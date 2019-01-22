@@ -30,10 +30,10 @@ public class BoardTest {
 
     @Test
     public void testValidEntryValidation() throws EntryOutOfBoundException {
-        for (byte i = 1; i <= 9; i++) {
-            Board.validateEntry(i);
+        for (byte i = 1; i <= Board.BOARD_SIZE; i++) {
+            Assert.assertEquals(i, Board.validateEntry(i));
         }
-        Board.validateEntry((byte) -1);
+        Assert.assertEquals(-1, Board.validateEntry((byte) -1));
     }
 
     @Test(expected = EntryOutOfBoundException.class)
