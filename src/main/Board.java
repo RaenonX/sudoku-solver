@@ -67,11 +67,11 @@ public class Board {
         return sudoku.get(rowNum).get(colNum) == EMPTY_SLOT;
     }
 
-    public List<ValidationResult> isSolvedDetail() {
+    public List<main.ValidationResult> isSolvedDetail() {
         return IntStream
                 .range(0, Board.BOARD_SIZE)
                 .mapToObj(
-                        x -> new ValidationResult[]{validateRow(x), validateColumn(x), validateSquare(x)})
+                        x -> new main.ValidationResult[]{validateRow(x), validateColumn(x), validateSquare(x)})
                 .flatMap(Stream::of)
                 .collect(Collectors.toList());
     }
