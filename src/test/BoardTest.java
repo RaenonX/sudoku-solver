@@ -46,4 +46,11 @@ public class BoardTest {
         Assert.assertFalse(BoardReader.readSafe("puzzle-board.ss").isSolved());
         Assert.assertTrue(BoardReader.readSafe("puzzle-filled.ss").isSolved());
     }
+
+    @Test
+    public void testAutoSolveValid() {
+        Board b = BoardReader.readSafe("puzzle-board.ss");
+        b.autoSolve();
+        Assert.assertTrue(b.isSolved());
+    }
 }
