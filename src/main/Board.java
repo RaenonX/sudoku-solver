@@ -96,8 +96,7 @@ public class Board {
             for (int c = 0; c < Board.BOARD_SIZE; c++) {
                 if (isEmptySlot(r, c)) {
                     for (int e = 1; e <= Board.BOARD_SIZE; e++) {
-                        if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) &&
-                                autoSolve(r, asr)) {
+                        if (insertEntryValidateSafe(r, c, (byte) e).stream().allMatch(ValidationResult::isSuccess) && autoSolve(r, asr)) {
                             return true;
                         } else {
                             removeEntry(r, c);
